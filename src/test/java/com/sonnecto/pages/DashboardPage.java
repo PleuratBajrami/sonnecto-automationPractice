@@ -12,4 +12,5 @@ public class DashboardPage {
     @FindBy(id = "contact-link")
     public WebElement contactLink;
 
+    String aasdas;
 }
