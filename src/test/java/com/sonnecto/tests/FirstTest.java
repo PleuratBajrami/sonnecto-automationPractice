@@ -11,5 +11,6 @@ public class FirstTest {
         Driver.getDriver().get("http://automationpractice.com/index.php");
 
         dashboardPage.contactLink.click();
+        String aa;
     }
 }
