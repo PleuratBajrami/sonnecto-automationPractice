@@ -1,5 +1,7 @@
 package com.sonnecto.pages;
 
+import com.github.javafaker.Faker;
+import com.sonnecto.utilites.Driver;
 import com.sonnecto.utilites.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -7,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-public class LoginPage extends TestBase {
+public class LoginPage {
 
     @FindBy(xpath = "(//input[@class='is_required validate account_input form-control'])[1]")
     public WebElement emailField;
@@ -33,24 +35,37 @@ public class LoginPage extends TestBase {
     @FindBy(id = "uniform-id_state")
     public WebElement stateField;
 
+    @FindBy(id = "postcode")
+    public WebElement postalCodeField;
+
+    @FindBy(id = "phone_mobile")
+    public WebElement mobilePhoneField;
+
+    public Faker faker =  new Faker();
+
+    public void selectState(int index){
+        Select select = new Select(stateField);
+        select.selectByIndex(index);
+    }
+
     public void selectDaysOfBirth(int index){
-        Select select = new Select(driver.findElement(By.id("days")));
+        Select select = new Select(Driver.getDriver().findElement(By.id("days")));
         select.selectByIndex(index);
     }
 
     public void selectMonthOfBirth(String month){
-        Select select = new Select(driver.findElement(By.id("months")));
+        Select select = new Select(Driver.getDriver().findElement(By.id("months")));
         select.selectByVisibleText(month);
     }
 
     public void selectYearOfBirth(String year){
-        Select select = new Select(driver.findElement(By.id("years")));
+        Select select = new Select(Driver.getDriver().findElement(By.id("years")));
         select.selectByVisibleText(year);
     }
 
     public void verifyLoginTitle(){
         String expectedDriver = "Login - My Store";
-        String actualDriver = driver.getTitle();
+        String actualDriver = Driver.getDriver().getTitle();
         Assert.assertEquals(expectedDriver, actualDriver);
 
 
