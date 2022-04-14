@@ -8,14 +8,18 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 public class DashboardPage extends TestBase {
-    public DashboardPage(){
+    public DashboardPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
     @FindBy(id = "contact-link")
     public WebElement contactLink;
 
     @FindBy(xpath = "//a[@class='login']")
     public WebElement logInBttn;
+
+    @FindBy(xpath = "(//a[@title='T-shirts'])[2]");
+    public WebElement TshirtsBttn;
 
 
 }
